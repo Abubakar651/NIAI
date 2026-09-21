@@ -36,7 +36,8 @@ Repository containing coursework, practical lab exercises, and mini-projects com
 │   └── Use Case-ITW/                  # International Telecom Week (ITW) use-case datasets
 │
 ├── Datasets_and_Exercises/            # Machine Learning & Statistics Practice Datasets
-│   ├── Dataset Spam No Spam Students.xlsx # Classification practice dataset
+│   ├── Dataset Spam No Spam Students.xlsx # Classification practice dataset (raw)
+│   ├── Dataset Spam No Spam Students(completed).xlsx # Classification dataset (completed)
 │   └── Statistics Exercise Students.xlsx   # Descriptive & inferential statistics exercises
 │
 ├── coffee_machine_simulator.py        # OOP Coffee Machine simulator with coin & resource logic
