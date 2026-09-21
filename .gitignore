@@ -1,3 +1,4 @@
+# Python virtual environments & bytecode
 .venv/
 venv/
 */.venv/
@@ -6,6 +7,29 @@ __pycache__/
 */__pycache__/
 *.py[cod]
 *.log
+
+# Operating System & IDE
 .DS_Store
+.agents/
+.idea/
+.vscode/
+
+# Secrets & Environment Variables
+.env
+*.env
+
+# Streamlit
 .streamlit/
 */.streamlit/
+
+# Temporary / Scratch files
+Untitled*
+*.tmp
+
+# Large Media & Video Recordings (>50MB/100MB)
+*.mp4
+*.mkv
+*.avi
+*.mov
+D1-Lecture Recording/
+**/Videos/
