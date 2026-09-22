@@ -40,6 +40,12 @@ Repository containing coursework, practical lab exercises, and mini-projects com
 │   ├── Dataset Spam No Spam Students(completed).xlsx # Classification dataset (completed)
 │   └── Statistics Exercise Students.xlsx   # Descriptive & inferential statistics exercises
 │
+├── Numpy.ipynb                        # Complete NumPy guide: arrays, vectorization, broadcasting & linear algebra
+├── Pandas.ipynb                       # Comprehensive Pandas guide: DataFrames, ETL, cleaning & transformations
+├── Matplotlib.ipynb                   # Data visualization guide: line, bar, scatter, subplots & exports
+├── Seaborn.ipynb                      # Statistical data visualization: distributions, categorical & correlation heatmaps
+├── Scikit_Learn.ipynb                 # Machine Learning pipeline: preprocessing, models, metrics & pipelines
+├── sales_trend.png                    # Sample visualization export from Matplotlib notebook
 ├── coffee_machine_simulator.py        # OOP Coffee Machine simulator with coin & resource logic
 ├── Even.py                            # Basic Python practice (conditional logic)
 ├── area_of_circle.py                  # Basic Python practice (geometry calculations)
@@ -55,7 +61,8 @@ Repository containing coursework, practical lab exercises, and mini-projects com
 - **Databases**: MySQL, Relational Schema Design, Foreign Keys & Constraints
 - **Data Analysis & BI**: Microsoft Power BI, Power Query, Microsoft Excel
 - **Data Transformation**: ETL workflows, unpivoting, merging, and cleaning multi-source datasets
-- **Python Libraries**: `mysql-connector-python`, `pandas`, `openpyxl`, `streamlit`
+- **Data Science & ML Libraries**: `numpy`, `pandas`, `matplotlib`, `seaborn`, `scikit-learn`
+- **Database & Web Connectors**: `mysql-connector-python`, `openpyxl`, `streamlit`
 
 ---
 
