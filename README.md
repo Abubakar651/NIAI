@@ -40,15 +40,23 @@ Repository containing coursework, practical lab exercises, and mini-projects com
 │   ├── Dataset Spam No Spam Students(completed).xlsx # Classification dataset (completed)
 │   └── Statistics Exercise Students.xlsx   # Descriptive & inferential statistics exercises
 │
-├── Numpy.ipynb                        # Complete NumPy guide: arrays, vectorization, broadcasting & linear algebra
-├── Pandas.ipynb                       # Comprehensive Pandas guide: DataFrames, ETL, cleaning & transformations
-├── Matplotlib.ipynb                   # Data visualization guide: line, bar, scatter, subplots & exports
-├── Seaborn.ipynb                      # Statistical data visualization: distributions, categorical & correlation heatmaps
-├── Scikit_Learn.ipynb                 # Machine Learning pipeline: preprocessing, models, metrics & pipelines
-├── sales_trend.png                    # Sample visualization export from Matplotlib notebook
-├── coffee_machine_simulator.py        # OOP Coffee Machine simulator with coin & resource logic
-├── Even.py                            # Basic Python practice (conditional logic)
-├── area_of_circle.py                  # Basic Python practice (geometry calculations)
+├── Data_Science_and_ML/                # Core Data Science & Machine Learning modules
+│   ├── NumPy/
+│   │   └── Numpy.ipynb                # Complete NumPy guide: arrays, vectorization, broadcasting & linear algebra
+│   ├── Pandas/
+│   │   └── Pandas.ipynb               # Comprehensive Pandas guide: DataFrames, ETL, cleaning & transformations
+│   ├── Data_Visualization/
+│   │   ├── Matplotlib.ipynb           # Line, bar, scatter, subplots & high-res chart exports
+│   │   ├── Seaborn.ipynb              # Distributions, categorical plots & correlation heatmaps
+│   │   └── sales_trend.png            # Sample visual export
+│   └── Machine_Learning/
+│       └── Scikit_Learn.ipynb         # End-to-end ML: preprocessing, models, metrics & pipelines
+│
+├── Python_Basics/                     # Foundational Python exercises and OOP projects
+│   ├── coffee_machine_simulator.py    # OOP Coffee Machine simulator with coin & resource logic
+│   ├── Even.py                        # Basic Python practice (conditional logic)
+│   └── area_of_circle.py              # Basic Python practice (geometry calculations)
+│
 ├── MASTER_SCHEDULE.md                 # Daily study plan, Jira targets, and timetable
 └── .gitignore                         # Git exclusion rules for large media, venvs, and secrets
 ```
@@ -76,6 +84,13 @@ A store management application managing inventory, product catalogs, customer tr
 
 ### 3. [Road Accident Analysis](Road_Accident_Mini_Project/)
 An end-to-end data preparation and reporting mini-project analyzing road accident causes, casualties, road conditions, and trends.
+
+### 4. [Data Science & Machine Learning Modules](Data_Science_and_ML/)
+Hands-on reference guides and notebooks covering:
+- **[NumPy](Data_Science_and_ML/NumPy/Numpy.ipynb)**: Array computing, vectorization, and broadcasting.
+- **[Pandas](Data_Science_and_ML/Pandas/Pandas.ipynb)**: Comprehensive data wrangling, cleaning, and aggregation.
+- **[Data Visualization](Data_Science_and_ML/Data_Visualization/)**: High-res plotting and statistical visuals with Matplotlib & Seaborn.
+- **[Machine Learning](Data_Science_and_ML/Machine_Learning/Scikit_Learn.ipynb)**: Scikit-Learn workflows from preprocessing to model evaluation.
 
 ---
 
