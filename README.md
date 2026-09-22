@@ -52,14 +52,10 @@ Repository containing coursework, practical lab exercises, and mini-projects com
 │   └── Machine_Learning/
 │       └── Scikit_Learn.ipynb         # End-to-end ML: preprocessing, models, metrics & pipelines
 │
-├── Student_Management_System/         # CLI Student Record System using Pandas & CSV storage
-│   ├── student_management_system.py   # Application entrypoint & CRUD operations
-│   ├── requirements.txt               # Dependencies (pandas)
-│   └── README.md                      # System documentation
-│
-├── Python_Basics/                     # Foundational Python exercises, OOP, and data structures
-│   ├── Data_Structures_and_Algorithms.ipynb # BST, Stack, recursion, and algorithm drills
+├── Python_OOP_and_DSA/                # Python OOP, data structures, algorithms & CLI systems
+│   ├── student_management_system.py   # CLI Student Management System (OOP & Pandas CSV CRUD)
 │   ├── coffee_machine_simulator.py    # OOP Coffee Machine simulator with coin & resource logic
+│   ├── Data_Structures_and_Algorithms.ipynb # BST, Stack, recursion & algorithm drills
 │   ├── Even.py                        # Basic Python practice (conditional logic)
 │   └── area_of_circle.py              # Basic Python practice (geometry calculations)
 │
@@ -98,8 +94,8 @@ Hands-on reference guides and notebooks covering:
 - **[Data Visualization](Data_Science_and_ML/Data_Visualization/)**: High-res plotting and statistical visuals with Matplotlib & Seaborn.
 - **[Machine Learning](Data_Science_and_ML/Machine_Learning/Scikit_Learn.ipynb)**: Scikit-Learn workflows from preprocessing to model evaluation.
 
-### 5. [Student Management System](Student_Management_System/)
-A lightweight CLI student records manager demonstrating pandas DataFrame manipulation, conditional record filtering, and CSV-based data persistence.
+### 5. [Student Management System](Python_OOP_and_DSA/student_management_system.py)
+A lightweight CLI student records manager demonstrating OOP architecture, pandas DataFrame manipulation, conditional record filtering, and CSV-based data persistence.
 
 ---
 
