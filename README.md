@@ -52,7 +52,13 @@ Repository containing coursework, practical lab exercises, and mini-projects com
 │   └── Machine_Learning/
 │       └── Scikit_Learn.ipynb         # End-to-end ML: preprocessing, models, metrics & pipelines
 │
-├── Python_Basics/                     # Foundational Python exercises and OOP projects
+├── Student_Management_System/         # CLI Student Record System using Pandas & CSV storage
+│   ├── student_management_system.py   # Application entrypoint & CRUD operations
+│   ├── requirements.txt               # Dependencies (pandas)
+│   └── README.md                      # System documentation
+│
+├── Python_Basics/                     # Foundational Python exercises, OOP, and data structures
+│   ├── Data_Structures_and_Algorithms.ipynb # BST, Stack, recursion, and algorithm drills
 │   ├── coffee_machine_simulator.py    # OOP Coffee Machine simulator with coin & resource logic
 │   ├── Even.py                        # Basic Python practice (conditional logic)
 │   └── area_of_circle.py              # Basic Python practice (geometry calculations)
@@ -91,6 +97,9 @@ Hands-on reference guides and notebooks covering:
 - **[Pandas](Data_Science_and_ML/Pandas/Pandas.ipynb)**: Comprehensive data wrangling, cleaning, and aggregation.
 - **[Data Visualization](Data_Science_and_ML/Data_Visualization/)**: High-res plotting and statistical visuals with Matplotlib & Seaborn.
 - **[Machine Learning](Data_Science_and_ML/Machine_Learning/Scikit_Learn.ipynb)**: Scikit-Learn workflows from preprocessing to model evaluation.
+
+### 5. [Student Management System](Student_Management_System/)
+A lightweight CLI student records manager demonstrating pandas DataFrame manipulation, conditional record filtering, and CSV-based data persistence.
 
 ---
 

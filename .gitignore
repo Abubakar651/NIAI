@@ -25,6 +25,7 @@ __pycache__/
 # Temporary / Scratch files
 Untitled*
 *.tmp
+student.csv
 
 # Large Media & Video Recordings (>50MB/100MB)
 *.mp4
