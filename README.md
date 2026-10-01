@@ -71,7 +71,7 @@ NIAI/
 | **SQL & Databases** | [`Coursework/SQL_and_Databases/`](Coursework/SQL_and_Databases/) | CTEs, window functions, inner/outer joins, Python-to-MySQL pipeline |
 | **Data Science Toolkit** | [`Coursework/Data_Science_Toolkit/`](Coursework/Data_Science_Toolkit/) | NumPy vectorized matrices, Pandas ETL transformations, Matplotlib figures, Seaborn statistical heatmaps |
 | **Power Query & BI** | [`Coursework/Power_Query_and_BI/`](Coursework/Power_Query_and_BI/) | Relational modeling (`Exercise-1.xlsx`), unpivoting subcategorized tables, multi-country telecom consolidation |
-| **Machine Learning** | [`Coursework/Machine_Learning/`](Coursework/Machine_Learning/) | Scikit-Learn workflows, SMS spam classification, inferential statistics & probability distributions |
+| **Machine Learning** | [`Coursework/Machine_Learning/`](Coursework/Machine_Learning/) | Scikit-Learn workflows, WDBC diagnostic classification pipeline, Feature Engineering (KC House Data), Linear Regression (SAT/GPA, Salary/Exp), SMS spam classification, inferential statistics & probability distributions |
 
 ---
 
