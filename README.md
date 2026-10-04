@@ -67,7 +67,7 @@ NIAI/
 
 | Module | Location | Core Topics Covered |
 | :--- | :--- | :--- |
-| **Python & OOP** | [`Coursework/Python_and_OOP/`](Coursework/Python_and_OOP/) | Classes, inheritance, state machines (Coffee Maker), Student System, Binary Search Trees & Big-O notation |
+| **Python & OOP** | [`Coursework/Python_and_OOP/`](Coursework/Python_and_OOP/) | Core fundamentals (string manipulation, two-pointer algorithms, match-case calculator), MRO & diamond inheritance, property encapsulation, state machines (Coffee Maker), Student System, and internship assessments |
 | **SQL & Databases** | [`Coursework/SQL_and_Databases/`](Coursework/SQL_and_Databases/) | CTEs, window functions, inner/outer joins, Python-to-MySQL pipeline |
 | **Data Science Toolkit** | [`Coursework/Data_Science_Toolkit/`](Coursework/Data_Science_Toolkit/) | NumPy vectorized matrices, Pandas ETL transformations, Matplotlib figures, Seaborn statistical heatmaps |
 | **Power Query & BI** | [`Coursework/Power_Query_and_BI/`](Coursework/Power_Query_and_BI/) | Relational modeling (`Exercise-1.xlsx`), unpivoting subcategorized tables, multi-country telecom consolidation |
