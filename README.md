@@ -6,7 +6,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-blue.svg)](https://www.mysql.com/)
 [![Power BI](https://img.shields.io/badge/Power_BI-Analytics-yellow.svg)](https://powerbi.microsoft.com/)
 
-Central repository containing end-to-end projects, coursework labs, and practical implementations completed during the **NAVTTC / National Institute of Artificial Intelligence (NIAI)** program.
+Central repository containing end-to-end projects, coursework labs, and practical implementations completed during the **NAVTTC / National Institute of Artificial Intelligence (NIAI)** program hosted at **NETSOL Technologies**.
 
 ---
 
@@ -14,27 +14,48 @@ Central repository containing end-to-end projects, coursework labs, and practica
 
 ```text
 NIAI/
-├── 📁 Projects/                         # ⭐ Production-grade showcase projects
-│   ├── 📁 Credit_Score_EDA/             # Credit risk exploratory data analysis & quality audit
-│   ├── 📁 AlFatah_Retail_Store/         # Retail Supermarket management system & order processing
-│   ├── 📁 LMS_Database_System/          # Relational LMS database schema (MySQL) & Python CRUD
-│   └── 📁 Road_Accident_Analytics/      # Incident causality & casualty reporting workbook
+├── 📁 NAVTCC exercise/                 # 🚀 Official NAVTTC Weekly Hands-on Tasks (Weeks 1–5)
+│   ├── 📁 Week1/                       # Python fundamentals, Linux, strings, loops, collections
+│   ├── 📁 Week2/                       # Functions, exceptions, custom errors, descriptive stats
+│   ├── 📁 Week3/                       # NumPy array computing, indexing, slicing, reshaping
+│   ├── 📁 Week4/                       # Pandas DataFrames, CSV analysis, data cleaning & correlation
+│   └── 📁 Week5/                       # Scikit-Learn Linear Regression & Logistic Regression
 │
-├── 📁 Coursework/                       # 📚 Modular curriculum labs aligned with syllabus
-│   ├── 📁 Python_and_OOP/               # OOP principles, Data Structures & Algorithms, CLI tools
-│   ├── 📁 SQL_and_Databases/            # Advanced SQL queries, window functions & MySQL connector
-│   ├── 📁 Data_Science_Toolkit/         # NumPy, Pandas, Matplotlib & Seaborn deep-dive notebooks
-│   ├── 📁 Power_Query_and_BI/           # Multi-source ETL pipelines & relational data modeling
-│   └── 📁 Machine_Learning/             # Supervised classification, pipelines & statistical exercises
+├── 📁 Projects/                        # ⭐ Production-grade showcase projects
+│   ├── 📁 Credit_Score_EDA/            # Credit risk exploratory data analysis & quality audit
+│   ├── 📁 AlFatah_Retail_Store/        # Retail Supermarket management system & order processing
+│   ├── 📁 LMS_Database_System/         # Relational LMS database schema (MySQL) & Python CRUD
+│   └── 📁 Road_Accident_Analytics/     # Incident causality & casualty reporting workbook
 │
-├── 📁 Resources/                        # 📖 Curricula & reference guides
-│   ├── NAVTTC Outline-Students.pdf      # Official 12-week AI & Data Analytics syllabus
-│   └── MASTER_SCHEDULE.md               # Daily 9-hour study plan & timetable
+├── 📁 Coursework/                      # 📚 Modular curriculum labs aligned with syllabus
+│   ├── 📁 Python_and_OOP/              # OOP principles, Data Structures & Algorithms, CLI tools
+│   ├── 📁 SQL_and_Databases/           # Advanced SQL queries, window functions & MySQL connector
+│   ├── 📁 Data_Science_Toolkit/        # NumPy, Pandas, Matplotlib & Seaborn deep-dive notebooks
+│   ├── 📁 Power_Query_and_BI/          # Multi-source ETL pipelines & relational data modeling
+│   └── 📁 Machine_Learning/            # Supervised classification, pipelines & statistical exercises
 │
-├── .gitignore                           # Production exclusions (large media, venvs, secrets)
-├── requirements.txt                     # Project dependencies
+├── 📁 Resources/                       # 📖 Curricula & reference guides
+│   ├── NAVTTC Outline-Students.pdf     # Official 12-week AI & Data Analytics syllabus
+│   └── MASTER_SCHEDULE.md              # Daily 9-hour study plan & timetable
+│
+├── .gitignore                          # Production exclusions (large media, venvs, secrets)
+├── requirements.txt                    # Project dependencies
 └── README.md
 ```
+
+---
+
+## 🚀 NAVTTC Weekly Practical Exercises (Weeks 1 to 5)
+
+Organized and standalone practice scripts following the official [NAVTTC Outline](Resources/NAVTTC%20Outline-Students.pdf):
+
+| Week | Directory | Focus & Core Tasks |
+| :--- | :--- | :--- |
+| **Week 1** | [`NAVTCC exercise/Week1/`](NAVTCC%20exercise/Week1/) | **Python Basics & Linux**: Installation guide, terminal commands, data types, string operations, conditionals, loops (`for`, `while`, `break`, `continue`, `enumerate`), lists, tuples, sets, dictionaries (Tasks 1–20) |
+| **Week 2** | [`NAVTCC exercise/Week2/`](NAVTCC%20exercise/Week2/) | **Functions, Exceptions & Stats**: User-defined functions, error handling (`try/except/finally`), custom user exceptions, central tendency (mean, median, mode) & dispersion (std dev, variance) (Tasks 21–23, 49, 50) |
+| **Week 3** | [`NAVTCC exercise/Week3/`](NAVTCC%20exercise/Week3/) | **NumPy Array Computing**: Creating arrays (0D–3D), indexing, slicing, data types, copy vs view, shape, reshape, iterating (`nditer`), joining (`hstack`/`vstack`), splitting, searching (`where`), sorting, random sampling (Tasks 28–40) |
+| **Week 4** | [`NAVTCC exercise/Week4/`](NAVTCC%20exercise/Week4/) | **Pandas Data Analysis**: Series, DataFrames, `.loc` selection, CSV ingestion, data profiling (`describe`, `info`), missing value handling (`fillna`), deduplication, Pearson correlation matrices (Tasks 41–48) |
+| **Week 5** | [`NAVTCC exercise/Week5/`](NAVTCC%20exercise/Week5/) | **Classical Machine Learning**: Scikit-Learn `LinearRegression` (train/test split, slope, intercept, MAE, MSE, $R^2$) and `LogisticRegression` (binary classification, confusion matrix, classification report) (Tasks 51–52) |
 
 ---
 
@@ -94,6 +115,14 @@ NIAI/
    ```bash
    pip install -r requirements.txt
    ```
+
+---
+
+## 📬 Contact & Feedback
+For any queries, collaboration, or feedback regarding these exercises and projects:
+- **Author**: Abubakar Iqbal
+- **Email**: [abubakariqbal651@gmail.com](mailto:abubakariqbal651@gmail.com)
+- **GitHub**: [@Abubakar651](https://github.com/Abubakar651)
 
 ---
 
