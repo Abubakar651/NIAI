@@ -1,32 +1,27 @@
-"""
-database.py
-Direct CSV database operations: read, write, update, delete, and atomic checkout.
-"""
-
+import os
 from datetime import datetime
 import pandas as pd
 
-PRODUCTS_FILE = "data/products.csv"
-ORDERS_FILE = "data/orders.csv"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+PRODUCTS_FILE = os.path.join(BASE_DIR, "data", "products.csv")
+ORDERS_FILE = os.path.join(BASE_DIR, "data", "orders.csv")
 
 
-# 1. READ FUNCTIONS
 def get_products():
-    """Reads and returns all products from products.csv as a DataFrame."""
+    """Load all products from CSV file."""
     return pd.read_csv(PRODUCTS_FILE)
 
 
 def get_orders():
-    """Reads and returns all orders from orders.csv. If empty or missing, returns empty DataFrame."""
+    """Load orders from CSV or return empty DataFrame if file doesn't exist."""
     try:
         return pd.read_csv(ORDERS_FILE)
     except (FileNotFoundError, pd.errors.EmptyDataError):
         return pd.DataFrame(columns=["order_id", "product_name", "quantity", "total_price", "date", "channel"])
 
 
-# 2. INVENTORY MANAGEMENT (CRUD)
+# Product CRUD operations
 def add_product(name, category, price, stock):
-    """Adds a new product record to products.csv with an auto-incremented product_id."""
     df = get_products()
     new_id = int(df["product_id"].max() + 1) if not df.empty else 1
     new_row = {
@@ -36,49 +31,46 @@ def add_product(name, category, price, stock):
         "price": int(price),
         "stock": int(stock)
     }
-    updated_df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
-    updated_df.to_csv(PRODUCTS_FILE, index=False)
+    df = pd.concat([df, pd.DataFrame([new_row])], ignore_index=True)
+    df.to_csv(PRODUCTS_FILE, index=False)
 
 
 def update_product(product_name, new_price, new_stock):
-    """Updates price and stock for an existing product in products.csv."""
     df = get_products()
     df.loc[df["name"] == product_name, ["price", "stock"]] = [int(new_price), int(new_stock)]
     df.to_csv(PRODUCTS_FILE, index=False)
 
 
 def delete_product(product_name):
-    """Deletes a product by name from products.csv."""
     df = get_products()
     df = df[df["name"] != product_name]
     df.to_csv(PRODUCTS_FILE, index=False)
 
 
-# 3. LOW STOCK CHECKER
 def get_low_stock(threshold=10):
-    """Returns all products whose current stock is less than the threshold."""
     df = get_products()
     return df[df["stock"] < threshold]
 
 
-# 4. ATOMIC MULTI-ITEM CHECKOUT & STOCK VALIDATION
+# Calculate total, discount (10% if Rs 1000 or more), and net amount
+def calculate_cart_totals(cart):
+    subtotal = sum(item["price"] * item["quantity"] for item in cart)
+    discount = round(subtotal * 0.10, 2) if subtotal >= 1000 else 0.0
+    grand_total = round(subtotal - discount, 2)
+    return subtotal, discount, grand_total
+
+
 def atomic_checkout(cart, channel):
     """
-    Atomically checks stock for all items in the cart before purchasing.
-    If ANY item lacks stock:
-        - Entire checkout aborts.
-        - No stock is deducted, no order is saved.
-    If ALL items pass check:
-        - Deducts stock for all items.
-        - Records each item in orders.csv.
-    Returns: (success: bool, data_or_error_message)
+    Validates stock, updates product inventory, and saves transaction.
+    If any item is out of stock, cancels the whole checkout.
     """
     if not cart:
         return False, "Cart is empty."
 
     df_products = get_products()
 
-    # Step A: Validate stock for EVERY item in cart first
+    # check stock for all cart items first
     for item in cart:
         match = df_products[df_products["name"] == item["name"]]
         if match.empty:
@@ -86,32 +78,67 @@ def atomic_checkout(cart, channel):
 
         available_stock = int(match.iloc[0]["stock"])
         if item["quantity"] > available_stock:
-            return False, f"Not enough stock for '{item['name']}'! (Available: {available_stock}, In Cart: {item['quantity']})"
+            return False, f"Not enough stock for '{item['name']}' (Only {available_stock} available)."
 
-    # Step B: All items passed validation -> Deduct stock & prepare order entries
+    # calculate totals and apply 10% discount if subtotal >= 1000
+    subtotal, discount, grand_total = calculate_cart_totals(cart)
+    discount_factor = (grand_total / subtotal) if subtotal > 0 else 1.0
+
     df_orders = get_orders()
     now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    start_order_id = len(df_orders) + 1
+    start_id = len(df_orders) + 1
     new_orders = []
 
-    for index, item in enumerate(cart):
-        prod_index = df_products[df_products["name"] == item["name"]].index[0]
-        # Deduct stock
-        df_products.loc[prod_index, "stock"] -= item["quantity"]
+    # deduct stock and prepare order records
+    for i, item in enumerate(cart):
+        idx = df_products[df_products["name"] == item["name"]].index[0]
+        df_products.loc[idx, "stock"] -= item["quantity"]
 
-        # Prepare order record
+        item_total = round(item["price"] * item["quantity"] * discount_factor, 2)
         new_orders.append({
-            "order_id": start_order_id + index,
+            "order_id": start_id + i,
             "product_name": item["name"],
             "quantity": item["quantity"],
-            "total_price": item["price"] * item["quantity"],
+            "total_price": item_total,
             "date": now_str,
             "channel": channel
         })
 
-    # Step C: Write changes to both CSV files atomically
+    # save changes to CSV files
     df_products.to_csv(PRODUCTS_FILE, index=False)
     updated_orders = pd.concat([df_orders, pd.DataFrame(new_orders)], ignore_index=True)
     updated_orders.to_csv(ORDERS_FILE, index=False)
 
-    return True, new_orders
+    return True, {
+        "orders": new_orders,
+        "subtotal": subtotal,
+        "discount": discount,
+        "grand_total": grand_total
+    }
+
+
+def get_sales_analysis(filtered_orders=None):
+    """Calculates total items sold, total sales revenue, and top selling item."""
+    df = filtered_orders if filtered_orders is not None else get_orders()
+    if df.empty:
+        return {
+            "total_items_sold": 0,
+            "total_revenue": 0.0,
+            "best_selling_product": "N/A",
+            "best_selling_quantity": 0,
+            "product_sales": pd.Series(dtype=int)
+        }
+
+    total_items = int(df["quantity"].sum())
+    total_revenue = round(float(df["total_price"].sum()), 2)
+    sales_by_item = df.groupby("product_name")["quantity"].sum().sort_values(ascending=False)
+    best_item = sales_by_item.index[0] if not sales_by_item.empty else "N/A"
+    best_qty = int(sales_by_item.iloc[0]) if not sales_by_item.empty else 0
+
+    return {
+        "total_items_sold": total_items,
+        "total_revenue": total_revenue,
+        "best_selling_product": best_item,
+        "best_selling_quantity": best_qty,
+        "product_sales": sales_by_item
+    }

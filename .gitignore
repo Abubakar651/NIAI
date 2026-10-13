@@ -11,6 +11,7 @@ __pycache__/
 # Operating System & IDE
 .DS_Store
 .agents/
+.claude/
 .idea/
 .vscode/
 

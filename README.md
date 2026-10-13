@@ -62,20 +62,20 @@ Organized and standalone practice scripts following the official [NAVTTC Outline
 ## ⭐ Featured Projects
 
 ### 1. [Credit Score Risk & EDA Assessment](Projects/Credit_Score_EDA/)
-* **Focus**: Data Quality Assessment, Credit Bureau Delinquency, Outlier & Anomaly Detection.
-* **Dataset**: 150,000 borrower records across 13 financial and behavioral metrics.
-* **Key Findings**: Severe class imbalance (6.68% default rate), non-linear relationship between age and risk (young borrowers 25–29 represent peak default risk at 12.1%), identification of special encoding flags (`98` past-due codes).
-* **Stack**: `pandas`, `numpy`, `matplotlib`, `seaborn`.
+* **Focus**: Data Quality Assessment, Credit Bureau Delinquency, Outlier Winsorization & ML Preparation.
+* **Dataset**: 150,000 borrower records across 13 financial and behavioral metrics (`CreditScore.csv`).
+* **Deliverables**: Complete 39-cell notebook ([`Credit_score_EDA.ipynb`](Projects/Credit_Score_EDA/Credit_score_EDA.ipynb)) with pre-rendered charts, structured Data Quality Report, univariate/bivariate visual EDA with key insights per plot, correlation matrix, clean data pipeline, and pre-modeling ML checklist.
+* **Stack**: Python, `pandas`, `numpy`, `matplotlib`, `seaborn`.
 
 ### 2. [Al-Fatah Retail Store System](Projects/AlFatah_Retail_Store/)
-* **Focus**: Object-Oriented Software Design, Inventory Tracking & Transaction Management.
-* **Features**: Dynamic cart calculations, automated tier-based discounts, CSV-backed persistence, and order management.
-* **Stack**: Python, OOP, CSV data handling.
+* **Focus**: Supermarket Inventory Tracking, POS Billing, 10% Discount Rule & Sales Dashboard.
+* **Features**: Dual interface with both a standalone terminal console app ([`main.py`](Projects/AlFatah_Retail_Store/main.py)) and a full Streamlit web app ([`app.py`](Projects/AlFatah_Retail_Store/app.py)), atomic stock validation, automatic 10% discount on purchases $\ge$ Rs. 1,000, itemized receipt printing, full Admin CRUD, and sales/inventory visual charts.
+* **Stack**: Python, Streamlit, Pandas, CSV persistence.
 
 ### 3. [LMS Database Management System](Projects/LMS_Database_System/)
-* **Focus**: Relational Database Design, Normalization, Integrity Constraints & Python Integration.
-* **Features**: Complete SQL schema modeling courses, students, enrollments, instructors, and grades with Python MySQL connector integration.
-* **Stack**: MySQL, SQL DDL/DML, `mysql-connector-python`.
+* **Focus**: Relational Database Design, Normalization, Constraints & Streamlit Web App.
+* **Features**: Complete 5-table MySQL relational schema ([`lms_database.sql`](Projects/LMS_Database_System/lms_database.sql)) with primary/foreign keys and duplicate enrollment prevention, parameterized Python CRUD backend ([`db.py`](Projects/LMS_Database_System/db.py)), full Streamlit frontend ([`app.py`](Projects/LMS_Database_System/app.py)), and SQL reports answering all 6 core business questions (BR-01 through BR-06).
+* **Stack**: MySQL, SQL DDL/DML, `mysql-connector-python`, Python, Streamlit, Pandas.
 
 ### 4. [Road Accident Analytics](Projects/Road_Accident_Analytics/)
 * **Focus**: Public Safety Incident Analysis, Casualty Segmentation, Environmental Correlation.
