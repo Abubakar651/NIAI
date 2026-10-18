@@ -14,6 +14,15 @@ Central repository containing end-to-end projects, coursework labs, and practica
 
 ```text
 NIAI/
+├── 📁 Assignments/                     # 📂 Consolidated All-in-One Assignments Submission Folder
+│   ├── 📁 01_Road_Accident_Dashboard/
+│   ├── 📁 02_Learning_Management_System/
+│   ├── 📁 03_Coffee_Machine_Simulator/
+│   ├── 📁 04_Mini_Supermarket_Management_System/
+│   ├── 📁 05_EDA_and_Data_Quality_Assessment/
+│   ├── 📁 06_Machine_Learning_Numerical_Conceptual_Paper/
+│   └── 📁 07_NAVTTC_Tasks_Till_Week_6/
+│
 ├── 📁 NAVTCC exercise/                 # 🚀 Official NAVTTC Weekly Hands-on Tasks (Weeks 1–6)
 │   ├── 📁 Week1/                       # Python fundamentals, Linux, strings, loops, collections
 │   ├── 📁 Week2/                       # Functions, exceptions, custom errors, descriptive stats
