@@ -369,6 +369,7 @@ def main():
     st.sidebar.markdown("---")
     st.sidebar.title("Navigation")
     choice = st.sidebar.radio("Navigate to:", allowed, index=allowed.index(st.session_state["nav_selection"]))
+    st.sidebar.caption("Developed by Abubakar Iqbal")
     st.session_state["nav_selection"] = choice
 
     views = {

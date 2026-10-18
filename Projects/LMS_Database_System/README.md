@@ -1,4 +1,6 @@
 # Learning Management System (LMS)
+**Author:** Abubakar Iqbal  
+**Program:** NAVTTC / NIAI (NETSOL Technologies)  
 
 A database project built using MySQL, Python, and Streamlit to manage students, instructors, courses, enrollments, and academic grades.
 

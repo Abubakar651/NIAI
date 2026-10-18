@@ -14,12 +14,13 @@ Central repository containing end-to-end projects, coursework labs, and practica
 
 ```text
 NIAI/
-├── 📁 NAVTCC exercise/                 # 🚀 Official NAVTTC Weekly Hands-on Tasks (Weeks 1–5)
+├── 📁 NAVTCC exercise/                 # 🚀 Official NAVTTC Weekly Hands-on Tasks (Weeks 1–6)
 │   ├── 📁 Week1/                       # Python fundamentals, Linux, strings, loops, collections
 │   ├── 📁 Week2/                       # Functions, exceptions, custom errors, descriptive stats
 │   ├── 📁 Week3/                       # NumPy array computing, indexing, slicing, reshaping
 │   ├── 📁 Week4/                       # Pandas DataFrames, CSV analysis, data cleaning & correlation
-│   └── 📁 Week5/                       # Scikit-Learn Linear Regression & Logistic Regression
+│   ├── 📁 Week5/                       # Scikit-Learn Linear Regression & Logistic Regression
+│   └── 📁 Week6/                       # Decision Trees, Support Vector Machines & Time Series
 │
 ├── 📁 Projects/                        # ⭐ Production-grade showcase projects
 │   ├── 📁 Credit_Score_EDA/            # Credit risk exploratory data analysis & quality audit
@@ -32,7 +33,7 @@ NIAI/
 │   ├── 📁 SQL_and_Databases/           # Advanced SQL queries, window functions & MySQL connector
 │   ├── 📁 Data_Science_Toolkit/        # NumPy, Pandas, Matplotlib & Seaborn deep-dive notebooks
 │   ├── 📁 Power_Query_and_BI/          # Multi-source ETL pipelines & relational data modeling
-│   └── 📁 Machine_Learning/            # Supervised classification, pipelines & statistical exercises
+│   └── 📁 Machine_Learning/            # Supervised ML, exam papers, pipelines & statistical exercises
 │
 ├── 📁 Resources/                       # 📖 Curricula & reference guides
 │   ├── NAVTTC Outline-Students.pdf     # Official 12-week AI & Data Analytics syllabus
@@ -45,7 +46,7 @@ NIAI/
 
 ---
 
-## 🚀 NAVTTC Weekly Practical Exercises (Weeks 1 to 5)
+## 🚀 NAVTTC Weekly Practical Exercises (Weeks 1 to 6)
 
 Organized and standalone practice scripts following the official [NAVTTC Outline](Resources/NAVTTC%20Outline-Students.pdf):
 
@@ -56,6 +57,7 @@ Organized and standalone practice scripts following the official [NAVTTC Outline
 | **Week 3** | [`NAVTCC exercise/Week3/`](NAVTCC%20exercise/Week3/) | **NumPy Array Computing**: Creating arrays (0D–3D), indexing, slicing, data types, copy vs view, shape, reshape, iterating (`nditer`), joining (`hstack`/`vstack`), splitting, searching (`where`), sorting, random sampling (Tasks 28–40) |
 | **Week 4** | [`NAVTCC exercise/Week4/`](NAVTCC%20exercise/Week4/) | **Pandas Data Analysis**: Series, DataFrames, `.loc` selection, CSV ingestion, data profiling (`describe`, `info`), missing value handling (`fillna`), deduplication, Pearson correlation matrices (Tasks 41–48) |
 | **Week 5** | [`NAVTCC exercise/Week5/`](NAVTCC%20exercise/Week5/) | **Classical Machine Learning**: Scikit-Learn `LinearRegression` (train/test split, slope, intercept, MAE, MSE, $R^2$) and `LogisticRegression` (binary classification, confusion matrix, classification report) (Tasks 51–52) |
+| **Week 6** | [`NAVTCC exercise/Week6/`](NAVTCC%20exercise/Week6/) | **Supervised ML & Time Series**: Decision Tree classification (entropy, depth), Support Vector Machine (SVC linear/RBF kernel), and Pandas Time Series Analysis (rolling average, resampling, datetime indexing) (Tasks 53–55) |
 
 ---
 

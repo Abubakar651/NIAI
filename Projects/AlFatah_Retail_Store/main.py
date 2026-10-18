@@ -222,6 +222,7 @@ def main():
     while True:
         print("\n" + "=" * 44)
         print("    AL-FATAH SUPERMARKET MANAGEMENT SYSTEM")
+        print("          Developed by Abubakar Iqbal")
         print("=" * 44)
         print("1. View Products")
         print("2. Shop / New Bill (Customer & POS)")

@@ -69,7 +69,7 @@ class CoffeeMachine:
     def run(self):
         """Main execution loop for the coffee machine simulator."""
         is_on = True
-        print("=== Welcome to the Coffee Machine Simulator ===")
+        print("=== Welcome to Abubakar's Coffee Machine Simulator ===")
         
         while is_on:
             choice = input("\nWhat would you like? (espresso/latte/cappuccino): ").strip().lower()

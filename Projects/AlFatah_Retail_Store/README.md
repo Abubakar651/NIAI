@@ -1,4 +1,6 @@
 # Al-Fatah Super Store Management System
+**Author:** Abubakar Iqbal  
+**Program:** NAVTTC / NIAI (NETSOL Technologies)  
 
 A Python project for managing a mini supermarket store with inventory tracking, billing, 10% discount on orders of Rs. 1,000 or more, and basic sales analysis.
 

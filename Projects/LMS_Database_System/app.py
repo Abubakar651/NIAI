@@ -11,6 +11,8 @@ page = st.sidebar.radio(
     "Go to",
     ["Dashboard", "Students", "Instructors", "Courses", "Enrollments", "Grades", "Reports"]
 )
+st.sidebar.markdown("---")
+st.sidebar.caption("Developed by Abubakar Iqbal")
 
 
 # Page 1: Dashboard
