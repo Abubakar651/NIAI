@@ -51,13 +51,23 @@ Assignments/
 │   ├── ML_Numerical_Conceptual_Paper_Solution.md                       # Markdown complete solution
 │   └── README.md
 │
-└── 📁 07_NAVTTC_Tasks_Till_Week_6/
-    ├── Week1/                                       # Python fundamentals & Linux (Tasks 1–20)
-    ├── Week2/                                       # Functions, exceptions & stats (Tasks 21–23, 49, 50)
-    ├── Week3/                                       # NumPy array computing (Tasks 28–40)
-    ├── Week4/                                       # Pandas DataFrames & correlation (Tasks 41–48)
-    ├── Week5/                                       # Scikit-Learn linear & logistic models (Tasks 51–52)
-    ├── Week6/                                       # Decision trees, SVM & time series (Tasks 53–55)
+├── 📁 07_NAVTTC_Tasks_Till_Week_6/
+│   ├── Week1/                                       # Python fundamentals & Linux (Tasks 1–20)
+│   ├── Week2/                                       # Functions, exceptions & stats (Tasks 21–23, 49, 50)
+│   ├── Week3/                                       # NumPy array computing (Tasks 28–40)
+│   ├── Week4/                                       # Pandas DataFrames & correlation (Tasks 41–48)
+│   ├── Week5/                                       # Scikit-Learn linear & logistic models (Tasks 51–52)
+│   ├── Week6/                                       # Decision trees, SVM & time series (Tasks 53–55)
+│   └── README.md
+│
+└── 📁 08_NAVTTC_Tasks_Week_7_to_12/
+    ├── Week7/                                       # Deep Learning I, Boosting & CNNs (Tasks 56–64b)
+    ├── Week8/                                       # Recurrent architectures: RNN, LSTM, GRU (Tasks 1–5)
+    ├── Week9/                                       # Word Embeddings & Sequence Models (Tasks 1–4)
+    ├── Week10/                                      # Bi-LSTM, Attention & Capstone Architecture (Tasks 1–3)
+    ├── Week11/                                      # Azure AI Services, Security & OCR (Tasks 1–4)
+    ├── Week12/                                      # Azure NLP, Conversational AI & CI/CD (Tasks 1–4)
+    ├── run_all_tasks.py                             # Automated test suite (30/30 passed)
     └── README.md
 ```
 
@@ -74,3 +84,5 @@ Assignments/
 | **05** | **EDA & DATA QUALITY ASSESSMENT** | Homework | Python, Pandas, Seaborn | 39-cell notebook, 150k borrowers audit, Winsorization, visual insights | [`05_EDA_and_Data_Quality_Assessment/`](05_EDA_and_Data_Quality_Assessment/) |
 | **06** | **MACHINE LEARNING – NUMERICAL / CONCEPTUAL PAPER** | Exam | Math, Scikit-Learn, Theory | Step-by-step manual solutions (Sections A to F, 50 Marks) in DOCX & MD | [`06_Machine_Learning_Numerical_Conceptual_Paper/`](06_Machine_Learning_Numerical_Conceptual_Paper/) |
 | **07** | **NAVTTC TASKS TILL WEEK 6** | Coursework | Python, NumPy, Pandas, Scikit-Learn | All 55 hands-on syllabus practicals organized by week | [`07_NAVTTC_Tasks_Till_Week_6/`](07_NAVTTC_Tasks_Till_Week_6/) |
+| **08** | **NAVTTC TASKS WEEKS 7 TO 12** | Coursework | Deep Learning, PyTorch/NumPy, Azure AI | All 30 practicals covering RNN, LSTM, GRU, Word2Vec, Attention & Azure AI | [`08_NAVTTC_Tasks_Week_7_to_12/`](08_NAVTTC_Tasks_Week_7_to_12/) |
+

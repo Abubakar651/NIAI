@@ -21,7 +21,8 @@ NIAI/
 │   ├── 📁 04_Mini_Supermarket_Management_System/
 │   ├── 📁 05_EDA_and_Data_Quality_Assessment/
 │   ├── 📁 06_Machine_Learning_Numerical_Conceptual_Paper/
-│   └── 📁 07_NAVTTC_Tasks_Till_Week_6/
+│   ├── 📁 07_NAVTTC_Tasks_Till_Week_6/
+│   └── 📁 08_NAVTTC_Tasks_Week_7_to_12/
 │
 ├── 📁 NAVTCC exercise/                 # 🚀 Official NAVTTC Weekly Hands-on Tasks (Weeks 1–6)
 │   ├── 📁 Week1/                       # Python fundamentals, Linux, strings, loops, collections
@@ -32,6 +33,7 @@ NIAI/
 │   └── 📁 Week6/                       # Decision Trees, Support Vector Machines & Time Series
 │
 ├── 📁 Projects/                        # ⭐ Production-grade showcase projects
+│   ├── 📁 Credit_Risk/                 # Credit default risk prediction, LazyPredict benchmark & RF tuning
 │   ├── 📁 Credit_Score_EDA/            # Credit risk exploratory data analysis & quality audit
 │   ├── 📁 AlFatah_Retail_Store/        # Retail Supermarket management system & order processing
 │   ├── 📁 LMS_Database_System/         # Relational LMS database schema (MySQL) & Python CRUD
@@ -42,7 +44,8 @@ NIAI/
 │   ├── 📁 SQL_and_Databases/           # Advanced SQL queries, window functions & MySQL connector
 │   ├── 📁 Data_Science_Toolkit/        # NumPy, Pandas, Matplotlib & Seaborn deep-dive notebooks
 │   ├── 📁 Power_Query_and_BI/          # Multi-source ETL pipelines & relational data modeling
-│   └── 📁 Machine_Learning/            # Supervised ML, exam papers, pipelines & statistical exercises
+│   ├── 📁 Machine_Learning/            # Supervised & Unsupervised ML (Clustering, WDBC, Regression)
+│   └── 📁 Deep_Learning/               # MLPs, Sequential regression, Cancer classification & Ollama LLM
 │
 ├── 📁 Resources/                       # 📖 Curricula & reference guides
 │   ├── NAVTTC Outline-Students.pdf     # Official 12-week AI & Data Analytics syllabus
@@ -72,23 +75,29 @@ Organized and standalone practice scripts following the official [NAVTTC Outline
 
 ## ⭐ Featured Projects
 
-### 1. [Credit Score Risk & EDA Assessment](Projects/Credit_Score_EDA/)
+### 1. [Credit Risk Prediction & Default Analysis](Projects/Credit_Risk/)
+* **Focus**: Credit Default Classification, Automated Model Benchmarking, GridSearchCV Tuning & Threshold Optimization.
+* **Dataset**: 1,000 borrower records across 21 financial and demographic metrics (`credit.csv`).
+* **Deliverables**: Complete 32-cell notebook ([`credit_risk.ipynb`](Projects/Credit_Risk/credit_risk.ipynb)), Executive Presentation ([`credit_risk_presentation.pptx`](Projects/Credit_Risk/credit_risk_presentation.pptx)), specification ([`Project.pdf`](Projects/Credit_Risk/Project.pdf)), LazyPredict comparison, ROC-AUC evaluation, and Random Forest threshold tuning ($p \approx 0.35$) for bank bad debt minimization.
+* **Stack**: Python, `pandas`, `scikit-learn`, `lazypredict`, `matplotlib`, `seaborn`.
+
+### 2. [Credit Score Risk & EDA Assessment](Projects/Credit_Score_EDA/)
 * **Focus**: Data Quality Assessment, Credit Bureau Delinquency, Outlier Winsorization & ML Preparation.
 * **Dataset**: 150,000 borrower records across 13 financial and behavioral metrics (`CreditScore.csv`).
 * **Deliverables**: Complete 39-cell notebook ([`Credit_score_EDA.ipynb`](Projects/Credit_Score_EDA/Credit_score_EDA.ipynb)) with pre-rendered charts, structured Data Quality Report, univariate/bivariate visual EDA with key insights per plot, correlation matrix, clean data pipeline, and pre-modeling ML checklist.
 * **Stack**: Python, `pandas`, `numpy`, `matplotlib`, `seaborn`.
 
-### 2. [Al-Fatah Retail Store System](Projects/AlFatah_Retail_Store/)
+### 3. [Al-Fatah Retail Store System](Projects/AlFatah_Retail_Store/)
 * **Focus**: Supermarket Inventory Tracking, POS Billing, 10% Discount Rule & Sales Dashboard.
 * **Features**: Dual interface with both a standalone terminal console app ([`main.py`](Projects/AlFatah_Retail_Store/main.py)) and a full Streamlit web app ([`app.py`](Projects/AlFatah_Retail_Store/app.py)), atomic stock validation, automatic 10% discount on purchases $\ge$ Rs. 1,000, itemized receipt printing, full Admin CRUD, and sales/inventory visual charts.
 * **Stack**: Python, Streamlit, Pandas, CSV persistence.
 
-### 3. [LMS Database Management System](Projects/LMS_Database_System/)
+### 4. [LMS Database Management System](Projects/LMS_Database_System/)
 * **Focus**: Relational Database Design, Normalization, Constraints & Streamlit Web App.
 * **Features**: Complete 5-table MySQL relational schema ([`lms_database.sql`](Projects/LMS_Database_System/lms_database.sql)) with primary/foreign keys and duplicate enrollment prevention, parameterized Python CRUD backend ([`db.py`](Projects/LMS_Database_System/db.py)), full Streamlit frontend ([`app.py`](Projects/LMS_Database_System/app.py)), and SQL reports answering all 6 core business questions (BR-01 through BR-06).
 * **Stack**: MySQL, SQL DDL/DML, `mysql-connector-python`, Python, Streamlit, Pandas.
 
-### 4. [Road Accident Analytics](Projects/Road_Accident_Analytics/)
+### 5. [Road Accident Analytics](Projects/Road_Accident_Analytics/)
 * **Focus**: Public Safety Incident Analysis, Casualty Segmentation, Environmental Correlation.
 * **Features**: Multi-variable analysis correlating weather conditions, road surface types, vehicle classifications, and severity levels.
 * **Stack**: Microsoft Excel, Power Query, Data Wrangling.
@@ -103,7 +112,8 @@ Organized and standalone practice scripts following the official [NAVTTC Outline
 | **SQL & Databases** | [`Coursework/SQL_and_Databases/`](Coursework/SQL_and_Databases/) | CTEs, window functions, inner/outer joins, Python-to-MySQL pipeline |
 | **Data Science Toolkit** | [`Coursework/Data_Science_Toolkit/`](Coursework/Data_Science_Toolkit/) | NumPy vectorized matrices, Pandas ETL transformations, Matplotlib figures, Seaborn statistical heatmaps |
 | **Power Query & BI** | [`Coursework/Power_Query_and_BI/`](Coursework/Power_Query_and_BI/) | Relational modeling (`Exercise-1.xlsx`), unpivoting subcategorized tables, multi-country telecom consolidation |
-| **Machine Learning** | [`Coursework/Machine_Learning/`](Coursework/Machine_Learning/) | Scikit-Learn workflows, Decision Trees (Shannon Entropy & Diabetes Diagnostic), WDBC diagnostic classification pipeline, Feature Engineering (KC House Data), Linear Regression (SAT/GPA, Salary/Exp), SMS spam classification, inferential statistics & probability distributions |
+| **Machine Learning** | [`Coursework/Machine_Learning/`](Coursework/Machine_Learning/) | Supervised & Unsupervised ML: K-Means & Hierarchical Clustering (`clustering_customer_spending.ipynb`), Scikit-Learn workflows, Decision Trees (Diabetes), WDBC diagnostic classification pipeline, Feature Engineering (KC House Data), Linear Regression (SAT/GPA, Salary/Exp), SMS spam classification, and Telco Churn dataset |
+| **Deep Learning** | [`Coursework/Deep_Learning/`](Coursework/Deep_Learning/) | Multi-Layer Perceptrons (`multi_layer_perceptron_iris.ipynb`), Sequential Regression (`sequential_regression_california_housing.ipynb`), Breast Cancer classification, and offline LLM inference (`ollama_offline.py`) |
 
 ---
 
