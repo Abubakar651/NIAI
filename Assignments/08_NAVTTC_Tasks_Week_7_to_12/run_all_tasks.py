@@ -1,5 +1,5 @@
-# Master Test Runner & Verification Suite for NAVTTC Weeks 7 to 12
-# Author: Abubakar Iqbal | NAVTTC / NIAI AI & Deep Learning
+# Abubakar Iqbal
+# NAVTTC Weeks 7 to 12 - Master Test Runner
 
 import os
 import sys
@@ -11,59 +11,50 @@ def run_suite():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     weeks = ["Week7", "Week8", "Week9", "Week10", "Week11", "Week12"]
 
-    print("=" * 80)
-    print("NAVTTC WEEKS 7 TO 12 COMPREHENSIVE VERIFICATION & TEST SUITE")
-    print("Author: Abubakar Iqbal | Program: NAVTTC / NIAI (NETSOL Technologies)")
-    print("=" * 80)
+    venv_py = os.path.abspath(os.path.join(base_dir, "../../.venv/bin/python3"))
+    py_exec = venv_py if os.path.exists(venv_py) else sys.executable
+
+    print("NAVTTC Weeks 7 to 12 Test Suite - Abubakar Iqbal")
+    print(f"Interpreter: {py_exec}")
+    print("-" * 70)
 
     records = []
-    total_start = time.time()
+    t_start = time.time()
 
-    for week in weeks:
-        week_dir = os.path.join(base_dir, week)
-        if not os.path.isdir(week_dir):
+    for w in weeks:
+        w_dir = os.path.join(base_dir, w)
+        if not os.path.isdir(w_dir):
             continue
-
-        scripts = sorted([f for f in os.listdir(week_dir) if f.endswith(".py")])
-        for script in scripts:
-            script_path = os.path.join(week_dir, script)
+        scripts = sorted([f for f in os.listdir(w_dir) if f.endswith(".py")])
+        for s in scripts:
+            s_path = os.path.join(w_dir, s)
             t0 = time.time()
-
-            # Execute via current python interpreter
-            res = subprocess.run([sys.executable, script_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            res = subprocess.run([py_exec, s_path], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             elapsed = time.time() - t0
-
             status = "PASSED" if res.returncode == 0 else "FAILED"
             records.append({
-                "Week": week,
-                "Script": script,
+                "Week": w,
+                "Script": s,
                 "Status": status,
-                "Duration (s)": round(elapsed, 2)
+                "Time (s)": round(elapsed, 2)
             })
-
-            print(f"[{status}] {week} -> {script} ({elapsed:.2f}s)")
+            print(f"[{status}] {w} -> {s} ({elapsed:.2f}s)")
             if res.returncode != 0:
-                print(f"  ERROR OUTPUT:\n{res.stderr[:300]}")
+                print(f"  Error:\n{res.stderr[:200]}")
 
-    total_time = time.time() - total_start
+    total_time = time.time() - t_start
     df = pd.DataFrame(records)
-
-    print("\n" + "=" * 80)
-    print("FINAL SUMMARY REPORT")
-    print("=" * 80)
+    print("\nSummary Table:")
     print(df.to_string(index=False))
 
-    passed_count = sum(df["Status"] == "PASSED")
-    total_count = len(df)
-    print("\n" + "-" * 80)
-    print(f"Total Tasks Executed: {total_count} | Passed: {passed_count} | Failed: {total_count - passed_count}")
-    print(f"Total Execution Runtime: {total_time:.2f} seconds")
-    print("-" * 80)
+    passed = sum(df["Status"] == "PASSED")
+    total = len(df)
+    print("-" * 70)
+    print(f"Total: {total} | Passed: {passed} | Failed: {total - passed} | Runtime: {total_time:.2f}s")
 
-    if passed_count == total_count:
-        print("ALL TASKS COMPLETED AND VALIDATED WITH 100% SUCCESS.")
+    if passed == total:
+        print("All Week 7 to 12 tasks executed successfully.")
     else:
-        print("WARNING: Some tasks encountered issues.")
         sys.exit(1)
 
 if __name__ == "__main__":

@@ -1,54 +1,35 @@
-# Task 61 - Text Processing with NLTK & NLP Primitives
-# NAVTTC Outline Week 7 / Task 61
-# Reference: https://pythonspot.com/category/nltk/
+# Abubakar Iqbal
+# NAVTTC Week 7 - Task 61: Text Processing Primitives
 
 import re
 import string
 
-# Student: Abubakar Iqbal | NAVTTC / NIAI AI & Deep Learning
-
-class RobustTextProcessor:
-    """
-    Self-contained, production-grade text processing pipeline.
-    Implements:
-      1. Word & Sentence Tokenization
-      2. Punctuation and Noise Filtering
-      3. Stopwords Removal
-      4. Morphological Stemming (Porter Algorithm rules)
-      5. Lemmatization (Context-aware base form reduction)
-      6. Part-of-Speech (POS) Tagging
-    """
-
-    # Comprehensive standard English stopwords list
+class TextProcessor:
     STOPWORDS = {
         "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are",
-        "aren't", "as", "at", "be", "because", "been", "before", "being", "below", "between", "both",
-        "but", "by", "can", "can't", "cannot", "could", "did", "do", "does", "doing", "don't", "down",
-        "during", "each", "few", "for", "from", "further", "had", "has", "have", "having", "he",
-        "her", "here", "hers", "herself", "him", "himself", "his", "how", "i", "if", "in", "into",
-        "is", "isn't", "it", "its", "itself", "just", "me", "more", "most", "my", "myself", "no",
-        "nor", "not", "of", "off", "on", "once", "only", "or", "other", "our", "ours", "ourselves",
-        "out", "over", "own", "same", "she", "should", "so", "some", "such", "than", "that", "the",
-        "their", "theirs", "them", "themselves", "then", "there", "these", "they", "this", "those",
-        "through", "to", "too", "under", "until", "up", "very", "was", "we", "were", "what", "when",
-        "where", "which", "while", "who", "whom", "why", "with", "would", "you", "your", "yours"
+        "as", "at", "be", "because", "been", "before", "being", "below", "between", "both", "but",
+        "by", "can", "did", "do", "does", "doing", "down", "during", "each", "few", "for", "from",
+        "further", "had", "has", "have", "having", "he", "her", "here", "hers", "him", "his", "how",
+        "i", "if", "in", "into", "is", "it", "its", "just", "me", "more", "most", "my", "no", "nor",
+        "not", "of", "off", "on", "once", "only", "or", "other", "our", "out", "over", "own", "same",
+        "she", "should", "so", "some", "such", "than", "that", "the", "their", "theirs", "them",
+        "then", "there", "these", "they", "this", "those", "through", "to", "too", "under", "until",
+        "up", "very", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom",
+        "why", "with", "you", "your"
     }
 
-    # Irregular lemmatization dictionary
     LEMMAS = {
         "running": "run", "runs": "run", "ran": "run",
         "studying": "study", "studies": "study", "studied": "study",
-        "better": "good", "best": "good", "worse": "bad", "worst": "bad",
-        "banking": "bank", "banks": "bank", "banked": "bank",
+        "learning": "learn", "learns": "learn", "learned": "learn",
         "investing": "invest", "invests": "invest", "invested": "invest",
-        "loans": "loan", "borrowed": "borrow", "borrowing": "borrow",
-        "transactions": "transaction", "transacting": "transact",
-        "payments": "payment", "paid": "pay", "paying": "pay",
-        "accounts": "account", "accounting": "account"
+        "banking": "bank", "banks": "bank", "banked": "bank",
+        "borrowed": "borrow", "borrowing": "borrow", "loans": "loan",
+        "transactions": "transaction", "transacted": "transact"
     }
 
     @staticmethod
-    def sentence_tokenize(text):
+    def sent_tokenize(text):
         return [s.strip() for s in re.split(r"(?<=[.!?]) +", text) if s.strip()]
 
     @staticmethod
@@ -60,99 +41,69 @@ class RobustTextProcessor:
         return [t for t in tokens if t.lower() not in self.STOPWORDS]
 
     @staticmethod
-    def porter_stem(word):
+    def stem(word):
         w = word.lower()
-        # Common suffix stripping rules
-        for suffix, repl in [
-            ("sses", "ss"), ("ies", "i"), ("ss", "ss"), ("s", ""),
-            ("ational", "ate"), ("tional", "tion"), ("enci", "ence"),
-            ("izer", "ize"), ("ing", ""), ("ed", ""), ("ly", "")
-        ]:
-            if w.endswith(suffix) and len(w) > len(suffix) + 2:
-                return w[:-len(suffix)] + repl
+        if w.endswith("sses"):
+            return w[:-2]
+        if w.endswith("ies"):
+            return w[:-2]
+        if w.endswith("ss"):
+            return w
+        if w.endswith("s") and len(w) > 2:
+            return w[:-1]
+        if w.endswith("ing") and len(w) > 4:
+            return w[:-3]
+        if w.endswith("ed") and len(w) > 3:
+            return w[:-2]
         return w
 
     def lemmatize(self, word):
         w = word.lower()
-        if w in self.LEMMAS:
-            return self.LEMMAS[w]
-        # General morphological reduction
-        if w.endswith("ing") and len(w) > 5:
-            return w[:-3]
-        if w.endswith("es") and len(w) > 4:
-            return w[:-2]
-        if w.endswith("s") and not w.endswith("ss") and len(w) > 3:
-            return w[:-1]
-        return w
+        return self.LEMMAS.get(w, w)
 
     @staticmethod
-    def simple_pos_tag(tokens):
+    def pos_tag(tokens):
         tags = []
+        verbs = {"study", "studying", "learn", "learning", "build", "building", "train", "training", "apply", "applying"}
         for word in tokens:
             w = word.lower()
-            if w in {"is", "are", "was", "were", "be", "have", "has", "had", "invest", "borrow", "pay", "run"}:
+            if w in verbs:
                 tag = "VERB"
-            elif w in {"quick", "financial", "good", "bad", "better", "best", "digital", "secure"}:
+            elif w in {"abubakar", "iqbal", "lahore", "python", "navttc"}:
+                tag = "PROPN"
+            elif w in {"deep", "smart", "fast", "accurate"}:
                 tag = "ADJ"
-            elif w in {"rapidly", "easily", "securely", "badly", "very"}:
-                tag = "ADV"
-            elif w in {"the", "a", "an", "this", "that"}:
-                tag = "DET"
-            elif w in {"in", "on", "at", "by", "for", "with"}:
-                tag = "ADP"
             else:
                 tag = "NOUN"
             tags.append((word, tag))
         return tags
 
-
 if __name__ == "__main__":
-    print("=" * 65)
-    print("Task 61: Text Processing Pipeline (Tokenization, Stemming, Lemmatization)")
-    print("Student: Abubakar Iqbal | NAVTTC Week 7")
-    print("=" * 65)
+    print("NAVTTC Week 7 Task 61 - Abubakar Iqbal")
 
-    processor = RobustTextProcessor()
-
-    sample_paragraph = (
-        "Modern artificial intelligence and machine learning are rapidly transforming the digital banking sector. "
-        "Customers are successfully applying for personalized loans and investing in structured portfolios. "
-        "Better predictive algorithms identify fraudulent transactions and safeguard user accounts securely!"
+    processor = TextProcessor()
+    abubakar_text = (
+        "Abubakar Iqbal is studying artificial intelligence and deep learning at NAVTTC in Lahore. "
+        "Abubakar is building neural models and learning advanced text processing techniques. "
+        "His algorithms handle complex financial transactions and help students learn faster!"
     )
 
-    print("\n[1] Original Input Paragraph:")
-    print(sample_paragraph)
+    abubakar_sentences = processor.sent_tokenize(abubakar_text)
+    print(f"\nSentences ({len(abubakar_sentences)}):")
+    for idx, s in enumerate(abubakar_sentences, 1):
+        print(f" {idx}. {s}")
 
-    # 1. Sentence Tokenization
-    sentences = processor.sentence_tokenize(sample_paragraph)
-    print(f"\n[2] Sentence Tokenization ({len(sentences)} Sentences Detected):")
-    for idx, s in enumerate(sentences, 1):
-        print(f"  Sentence {idx}: {s}")
+    abubakar_words = processor.word_tokenize(abubakar_text)
+    print(f"\nTotal Words: {len(abubakar_words)}")
 
-    # 2. Word Tokenization
-    words = processor.word_tokenize(sample_paragraph)
-    print(f"\n[3] Word Tokenization: Total {len(words)} Tokens Extracted.")
-    print("  First 12 Tokens:", words[:12])
+    abubakar_filtered = processor.remove_stopwords(abubakar_words)
+    print(f"Words after Stopword Removal: {len(abubakar_filtered)}")
 
-    # 3. Stopwords Removal
-    filtered_words = processor.remove_stopwords(words)
-    print(f"\n[4] Stopwords Removal: Reduced from {len(words)} to {len(filtered_words)} Informational Tokens.")
-    print("  Cleaned Tokens:", filtered_words[:12])
+    print("\nStemming vs Lemmatization:")
+    sample_words = ["studying", "learning", "transactions", "invested", "borrowing"]
+    for w in sample_words:
+        print(f"{w:<14} -> Stem: {processor.stem(w):<12} | Lemma: {processor.lemmatize(w)}")
 
-    # 4. Stemming vs Lemmatization Comparison
-    test_terms = ["investing", "banks", "loans", "borrowed", "better", "transactions", "running"]
-    print("\n[5] Morphological Comparison (Stemming vs. Lemmatization):")
-    print(f"{'Original Term':<15} | {'Stemmed (Porter)':<18} | {'Lemmatized (Root)':<18}")
-    print("-" * 55)
-    for term in test_terms:
-        stem = processor.porter_stem(term)
-        lemma = processor.lemmatize(term)
-        print(f"{term:<15} | {stem:<18} | {lemma:<18}")
-
-    # 5. POS Tagging
-    tagged = processor.simple_pos_tag(filtered_words[:8])
-    print("\n[6] Part-of-Speech (POS) Tagging (First 8 Meaningful Tokens):")
-    for token, tag in tagged:
-        print(f"  Token: {token:<15} -> POS Tag: [{tag}]")
-
-    print("\nTask 61 Text Processing Completed Successfully.")
+    print("\nPOS Tagging Sample:")
+    for word, tag in processor.pos_tag(abubakar_filtered[:8]):
+        print(f"{word:<12} : {tag}")

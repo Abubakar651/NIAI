@@ -1,102 +1,78 @@
-# Task 56 - Demonstration of Neural Networks from Scratch in Python
-# NAVTTC Outline Week 7 / Task 56
-# Reference: https://www.analyticsvidhya.com/blog/2020/07/neural-networks-from-scratch-in-pythonand-r
+# Abubakar Iqbal
+# NAVTTC Week 7 - Task 56: Neural Network from Scratch
 
 import numpy as np
 
-# Student: Abubakar Iqbal | NAVTTC / NIAI AI & Deep Learning
-
 class NeuralNetworkFromScratch:
-    """
-    A 2-Layer Feedforward Neural Network built from scratch with NumPy.
-    Architecture: Input Layer -> Hidden Layer (Sigmoid) -> Output Layer (Sigmoid)
-    Implements: Forward propagation, Mean Squared Error Loss, and Backpropagation with Gradient Descent.
-    """
-    def __init__(self, input_dim=2, hidden_dim=4, output_dim=1, learning_rate=0.1, random_state=42):
-        np.random.seed(random_state)
-        self.lr = learning_rate
-        # Xavier/He normal weight initialization
+    def __init__(self, input_dim=2, hidden_dim=4, output_dim=1, lr=0.1, seed=42):
+        np.random.seed(seed)
+        self.lr = lr
         self.W1 = np.random.randn(input_dim, hidden_dim) * np.sqrt(2.0 / input_dim)
         self.b1 = np.zeros((1, hidden_dim))
         self.W2 = np.random.randn(hidden_dim, output_dim) * np.sqrt(2.0 / hidden_dim)
         self.b2 = np.zeros((1, output_dim))
-        self.loss_history = []
+        self.losses = []
 
-    @staticmethod
-    def sigmoid(z):
+    def sigmoid(self, z):
         return 1.0 / (1.0 + np.exp(-np.clip(z, -25, 25)))
 
-    @staticmethod
-    def sigmoid_derivative(a):
+    def sigmoid_deriv(self, a):
         return a * (1.0 - a)
 
     def forward(self, X):
-        self.Z1 = np.dot(X, self.W1) + self.b1
-        self.A1 = self.sigmoid(self.Z1)
-        self.Z2 = np.dot(self.A1, self.W2) + self.b2
-        self.A2 = self.sigmoid(self.Z2)
-        return self.A2
+        self.z1 = np.dot(X, self.W1) + self.b1
+        self.a1 = self.sigmoid(self.z1)
+        self.z2 = np.dot(self.a1, self.W2) + self.b2
+        self.a2 = self.sigmoid(self.z2)
+        return self.a2
 
-    def backward(self, X, y, output):
+    def backward(self, X, y, out):
         m = X.shape[0]
-        # Output layer gradients (MSE Loss)
-        dZ2 = (output - y) * self.sigmoid_derivative(output)
-        dW2 = np.dot(self.A1.T, dZ2) / m
-        db2 = np.sum(dZ2, axis=0, keepdims=True) / m
+        dz2 = (out - y) * self.sigmoid_deriv(out)
+        dw2 = np.dot(self.a1.T, dz2) / m
+        db2 = np.sum(dz2, axis=0, keepdims=True) / m
 
-        # Hidden layer gradients
-        dA1 = np.dot(dZ2, self.W2.T)
-        dZ1 = dA1 * self.sigmoid_derivative(self.A1)
-        dW1 = np.dot(X.T, dZ1) / m
-        db1 = np.sum(dZ1, axis=0, keepdims=True) / m
+        da1 = np.dot(dz2, self.W2.T)
+        dz1 = da1 * self.sigmoid_deriv(self.a1)
+        dw1 = np.dot(X.T, dz1) / m
+        db1 = np.sum(dz1, axis=0, keepdims=True) / m
 
-        # Parameter updates via Gradient Descent
-        self.W2 -= self.lr * dW2
+        self.W2 -= self.lr * dw2
         self.b2 -= self.lr * db2
-        self.W1 -= self.lr * dW1
+        self.W1 -= self.lr * dw1
         self.b1 -= self.lr * db1
 
-    def train(self, X, y, epochs=1000, verbose=True):
+    def train(self, X, y, epochs=1000):
         for epoch in range(1, epochs + 1):
             out = self.forward(X)
             loss = np.mean((y - out) ** 2)
-            self.loss_history.append(loss)
+            self.losses.append(loss)
             self.backward(X, y, out)
-            if verbose and (epoch == 1 or epoch % 200 == 0 or epoch == epochs):
-                print(f"Epoch {epoch:4d}/{epochs} | MSE Loss: {loss:.6f}")
+            if epoch == 1 or epoch % 250 == 0:
+                print(f"Epoch {epoch:4d} | MSE: {loss:.5f}")
 
     def predict(self, X):
         probs = self.forward(X)
         return (probs >= 0.5).astype(int), probs
 
-
 if __name__ == "__main__":
-    print("=" * 65)
-    print("Task 56: 2-Layer Neural Network from Scratch (NumPy Implementation)")
-    print("Student: Abubakar Iqbal | NAVTTC Week 7")
-    print("=" * 65)
+    print("NAVTTC Week 7 Task 56 - Abubakar Iqbal")
 
-    # Classic non-linear XOR Problem (Cannot be solved by a single perceptron)
-    X = np.array([
+    abubakar_X = np.array([
         [0, 0],
         [0, 1],
         [1, 0],
         [1, 1]
     ], dtype=float)
-    y = np.array([[0], [1], [1], [0]], dtype=float)
+    abubakar_y = np.array([[0], [1], [1], [0]], dtype=float)
 
-    print("\nTraining on XOR Truth Table:")
-    print("Input Features (X):\n", X)
-    print("Target Labels (y):\n", y)
+    abubakar_nn = NeuralNetworkFromScratch(input_dim=2, hidden_dim=4, output_dim=1, lr=0.5)
+    abubakar_nn.train(abubakar_X, abubakar_y, epochs=1000)
 
-    nn = NeuralNetworkFromScratch(input_dim=2, hidden_dim=4, output_dim=1, learning_rate=0.5, random_state=42)
-    nn.train(X, y, epochs=1000, verbose=True)
+    abubakar_preds, abubakar_probs = abubakar_nn.predict(abubakar_X)
+    print("\nAbubakar's XOR Predictions:")
+    for i in range(len(abubakar_X)):
+        print(f"Input: {abubakar_X[i]} -> Target: {int(abubakar_y[i][0])} | Pred: {abubakar_preds[i][0]} (Prob: {abubakar_probs[i][0]:.4f})")
 
-    preds, raw_probs = nn.predict(X)
-    print("\n--- Model Evaluation & Final Predictions ---")
-    for i in range(len(X)):
-        print(f"Input: {X[i]} -> Target: {int(y[i][0])} | Predicted Prob: {raw_probs[i][0]:.4f} | Predicted Class: {preds[i][0]}")
-
-    accuracy = np.mean(preds == y) * 100
-    print(f"\nFinal XOR Classification Accuracy: {accuracy:.1f}%")
-    print("Task 56 Execution Completed Successfully.")
+    acc = np.mean(abubakar_preds == abubakar_y) * 100
+    print(f"Accuracy: {acc:.1f}%")
